@@ -11,13 +11,17 @@ format as well as the normalized telephone number. This information will each be
 separate rows. The telephone number will be placed in the first row.
 
 
-# How to run
+## How to run
 
 Simply execute mvn tomcat7:deploy to run the application.
 
-# Available endpoints
+## Available endpoints
 
 There is only one available endpoint: POST /callmanager/calls. Endpoints accept json representation of the call, 
 containing information about first and second name and the phone number. Example: 
 
 {"firstName":"Mary", "lastName":"Brown", "telephone":"+351234567554"}
+
+## How to change folder for the files with call information
+
+By default all information will be written into D:/callmanager/callinfo/ folder. If you want to change the folder, just change the property "file.folder" in application.properties file
