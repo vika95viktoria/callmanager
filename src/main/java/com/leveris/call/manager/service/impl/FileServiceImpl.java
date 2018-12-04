@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.leveris.call.manager.exception.ServiceException;
-import com.leveris.call.manager.model.CallTO;
+import com.leveris.call.manager.model.dto.CallTO;
 import com.leveris.call.manager.service.FileService;
 import com.leveris.call.manager.service.FormatService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,6 @@ public class FileServiceImpl implements FileService {
     }
 
     public void writeCallToFile(String fileName, CallTO callTO) {
-
         try(FileWriter fileWriter = new FileWriter(DIRECTORY + fileName + ".txt", true)) {
             fileWriter.write(String.format("%s %10s \r\n",
                     formatService.formatPhone(callTO.getTelephone()),

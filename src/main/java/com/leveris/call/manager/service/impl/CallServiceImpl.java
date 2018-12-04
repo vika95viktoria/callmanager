@@ -2,7 +2,7 @@ package com.leveris.call.manager.service.impl;
 
 import java.util.Optional;
 
-import com.leveris.call.manager.model.CallTO;
+import com.leveris.call.manager.model.dto.CallTO;
 import com.leveris.call.manager.service.CallService;
 import com.leveris.call.manager.service.FileService;
 import com.leveris.call.manager.validation.CallValidator;
@@ -23,10 +23,11 @@ public class CallServiceImpl implements CallService {
         this.fileService = fileService;
     }
 
-    public void saveCall(CallTO callTO) {
+    @Override
+    public CallTO saveCall(CallTO callTO) {
         callValidator.validatePhone(callTO.getTelephone());
         fileService.writeCallToFile(callTO.getLastName().toUpperCase() + "_" +
                     Optional.ofNullable(callTO.getFirstName()).map(String::toUpperCase).orElse(""), callTO);
-
+        return callTO;
     }
 }
